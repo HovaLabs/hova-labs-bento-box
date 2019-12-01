@@ -76,12 +76,16 @@ export const ThemeContextContainer = ({
   React.useEffect(() => {
     window.matchMedia("(prefers-color-scheme: dark)").addListener(() => {
       const themeKey = getTheme();
-      setThemeState(themes[themeKey]);
+      if (themeKey === "darkTheme" && theme.name !== "darkTheme") {
+        setThemeState(themes[themeKey]);
+      }
     });
 
     window.matchMedia("(prefers-color-scheme: light)").addListener(() => {
       const themeKey = getTheme();
-      setThemeState(themes[themeKey]);
+      if (themeKey === "lightTheme" && theme.name !== "lightTheme") {
+        setThemeState(themes[themeKey]);
+      }
     });
     // TODO: remove event listeners
   }, []);

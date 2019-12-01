@@ -5,6 +5,7 @@ import { Space, spaceDefault } from "./space";
 import { Typography, typographyDefault } from "./typography";
 
 export type Theme = {
+  name: "lightTheme" | "darkTheme";
   breakpoints: Breakpoints;
   colors: Colors;
   radii: Radii;
@@ -13,6 +14,7 @@ export type Theme = {
 };
 
 export const lightTheme: Theme = {
+  name: "lightTheme",
   breakpoints: breakpointsDefault,
   colors: colorsLightTheme,
   radii: radiiDefault,
@@ -21,6 +23,7 @@ export const lightTheme: Theme = {
 };
 
 export const darkTheme: Theme = {
+  name: "darkTheme",
   breakpoints: breakpointsDefault,
   colors: colorsDarkTheme,
   radii: radiiDefault,
