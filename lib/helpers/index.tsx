@@ -1,0 +1,1 @@
+export { createStyledComponent } from "./createStyledComponent";
