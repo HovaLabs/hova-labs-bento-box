@@ -70,35 +70,35 @@ export const ThemeContext = React.createContext<ThemeContextValue>(
 
 export const ThemeContextContainer = ({
   children
-}: ThemeContextContainerProps): React.ReactNode => {
+}: ThemeContextContainerProps): React.ReactElement => {
   const [theme, setThemeState] = React.useState(themes[getTheme()]);
 
   React.useEffect(() => {
-    window.matchMedia("(prefers-color-scheme: dark)").addListener(e => {
-      if (!e.matches) {
-        return;
-      }
-      if (getStoredTheme()) {
-        return;
-      }
-      setThemeState(themes.darkTheme);
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(() => {
+      const themeKey = getTheme();
+      setThemeState(themes[themeKey]);
     });
 
-    window.matchMedia("(prefers-color-scheme: light)").addListener(e => {
-      if (!e.matches) {
-        return;
-      }
-      if (getStoredTheme()) {
-        return;
-      }
-      setThemeState(themes.lightTheme);
+    window.matchMedia("(prefers-color-scheme: light)").addListener(() => {
+      const themeKey = getTheme();
+      setThemeState(themes[themeKey]);
     });
     // TODO: remove event listeners
   }, []);
 
   const setTheme = (themeKey: ThemeKey) => setThemeState(themes[themeKey]);
 
-  const [themeContextValue] = React.useState({ theme, setTheme });
+  const [themeContextValue, setThemeContextValue] = React.useState({
+    theme,
+    setTheme
+  });
+
+  React.useEffect(() => {
+    setThemeContextValue({
+      theme,
+      setTheme
+    });
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
