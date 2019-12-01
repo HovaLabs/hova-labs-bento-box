@@ -49,5 +49,5 @@ export const Button = ({
   title,
   type
 }: ButtonProps) => {
-  return <S.Button>{children}</S.Button>;
+  return <S.Button title={title}>{children}</S.Button>;
 };

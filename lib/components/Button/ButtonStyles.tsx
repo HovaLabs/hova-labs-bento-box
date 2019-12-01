@@ -1,6 +1,7 @@
+import { Button as ButtonRN } from "react-native";
 import { createStyledComponent } from "../../helpers";
 
-export const Button = createStyledComponent("button")(c => ({
+export const Button = createStyledComponent(ButtonRN)(c => ({
   alignItems: "center",
   appearance: "none",
   border: 0,

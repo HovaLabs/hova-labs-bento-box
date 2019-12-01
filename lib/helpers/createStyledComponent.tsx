@@ -55,12 +55,13 @@ const createStyles = (
   return styleOutputObject;
 };
 
-export const createStyledComponent = (ComponentInput: string) => (
+// TODO: Add forwardref
+export const createStyledComponent = (ComponentInput: any) => (
   styleArg?: StyleObject | StyleObjectFunction,
   propsStylesArg?: PropsStylesObject | PropsStylesObjectFunction
 ) =>
   React.memo<any>(
-    (props: Props = {}): React.ReactNode => {
+    (props: Props = {}): React.ReactElement => {
       const { theme } = React.useContext(ThemeContext);
       const contexts: Contexts = {
         theme

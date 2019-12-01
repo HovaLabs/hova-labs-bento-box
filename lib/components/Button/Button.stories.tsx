@@ -10,10 +10,6 @@ export const text = () => <Button>Hello Button</Button>;
 
 export const emoji = () => (
   <ThemeContextContainer>
-    <Button variant="primary" size="m">
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
+    <Button variant="primary" size="m" title="😀 😎 👍 💯" />
   </ThemeContextContainer>
 );
